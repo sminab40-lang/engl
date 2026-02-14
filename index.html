@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Past Simple vs Past Continuous – Practice</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#101a33;
+      --card2:#0f1730;
+      --text:#eaf0ff;
+      --muted:#b8c3e6;
+      --accent:#7aa8ff;
+      --good:#4ade80;
+      --bad:#fb7185;
+      --warn:#fbbf24;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 14px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 500px at 20% 0%, rgba(122,168,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(74,222,128,.12), transparent 60%),
+        radial-gradient(900px 700px at 50% 100%, rgba(251,113,133,.12), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    header{
+      max-width:1100px;
+      margin:28px auto 10px;
+      padding:0 18px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .title{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing:-.02em;
+      line-height:1.1;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size: 14px;
+    }
+
+    .toolbar{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      padding:10px 12px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      user-select:none;
+      backdrop-filter: blur(10px);
+    }
+
+    .pill strong{ color:var(--text); font-weight:700; }
+
+    main{
+      max-width:1100px;
+      margin: 14px auto 60px;
+      padding: 0 18px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+    }
+
+    @media (max-width: 980px){
+      main{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .card header{
+      margin:0;
+      padding:16px 16px 12px;
+      max-width:none;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.12);
+    }
+
+    .card header h2{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.01em;
+    }
+    .card header .hint{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .content{ padding:16px; display:flex; flex-direction:column; gap:14px; }
+
+    .question{
+      padding:14px;
+      border-radius: var(--radius2);
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .qtext{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:10px;
+    }
+
+    .qnum{
+      width:28px;
+      height:28px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background: rgba(122,168,255,.18);
+      border:1px solid rgba(122,168,255,.35);
+      color:var(--text);
+      font-weight:800;
+      flex:0 0 auto;
+    }
+
+    .qtext p{
+      margin:0;
+      line-height:1.35;
+    }
+
+    .choices{
+      display:grid;
+      gap:8px;
+      margin-top:6px;
+    }
+
+    label.choice{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 10px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+      transition: transform .06s ease, border-color .15s ease, background .15s ease;
+      user-select:none;
+    }
+    label.choice:hover{
+      transform: translateY(-1px);
+      border-color: rgba(122,168,255,.32);
+      background: rgba(122,168,255,.08);
+    }
+
+    input[type="radio"]{ transform: scale(1.05); }
+    .choice small{ color:var(--muted); }
+
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:8px;
+    }
+
+    button{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(122,168,255,.16);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+      font-weight:700;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    button:hover{
+      transform: translateY(-1px);
+      background: rgba(122,168,255,.24);
+      border-color: rgba(122,168,255,.45);
+    }
+    button.secondary{
+      background: rgba(255,255,255,.06);
+    }
+    button.secondary:hover{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .status{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .scoreBox{
+      padding:14px;
+      border-radius: var(--radius2);
+      background: rgba(0,0,0,.20);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .scoreLine{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+    }
+    .scoreLine .big{
+      font-size:32px;
+      font-weight:900;
+      letter-spacing:-.03em;
+    }
+    .bar{
+      margin-top:10px;
+      height:10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .bar > div{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(74,222,128,.95), rgba(122,168,255,.95));
+      transition: width .35s ease;
+    }
+
+    .msg{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      width: fit-content;
+    }
+
+    .feedback{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .chip{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+    }
+    .chip.good{ border-color: rgba(74,222,128,.35); background: rgba(74,222,128,.10); color: #d7ffe4; }
+    .chip.bad{ border-color: rgba(251,113,133,.35); background: rgba(251,113,133,.10); color: #ffe1e7; }
+
+    /* Sentence builder */
+    .builder{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .dropzone{
+      min-height:50px;
+      padding:10px;
+      border-radius: var(--radius2);
+      background: rgba(0,0,0,.20);
+      border:1px dashed rgba(255,255,255,.18);
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .dropzone.active{
+      border-color: rgba(122,168,255,.6);
+      box-shadow: 0 0 0 3px rgba(122,168,255,.12) inset;
+    }
+
+    .wordbank{
+      padding:10px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .word{
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.07);
+      cursor: grab;
+      user-select:none;
+      font-weight:700;
+      font-size:13px;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+    }
+    .word:hover{
+      transform: translateY(-1px);
+      border-color: rgba(122,168,255,.35);
+      background: rgba(122,168,255,.10);
+    }
+    .word:active{ cursor: grabbing; transform: translateY(0px) scale(.98); }
+    .word.ghost{ opacity:.45; }
+
+    .mini{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.08);
+      margin: 6px 0;
+    }
+
+    /* Confetti canvas overlay */
+    #confettiCanvas{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:50;
+    }
+
+    /* Toast */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform: translateX(-50%);
+      z-index:60;
+      padding:10px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.16);
+      color: var(--text);
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+      opacity:0;
+      transition: opacity .2s ease, transform .2s ease;
+      backdrop-filter: blur(10px);
+      font-size:13px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confettiCanvas"></canvas>
+
+  <header>
+    <div class="title">
+      <h1>Past Simple vs Past Continuous</h1>
+      <p class="subtitle">Choose the correct answers + build sentences by dragging words. Confetti at <strong>90%+</strong> 🎉</p>
+    </div>
+    <div class="toolbar">
+      <div class="pill">Progress: <strong id="progressText">0/8</strong></div>
+      <div class="pill">Sound: <strong id="soundState">On</strong></div>
+      <button class="secondary" id="toggleSoundBtn" type="button">Toggle Sound</button>
+      <button id="checkBtn" type="button">Check Score</button>
+      <button class="secondary" id="resetBtn" type="button">Reset</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Left: Practice 1 -->
+    <section class="card" aria-label="Practice 1">
+      <header>
+        <h2>Practice 1 – Choose the correct answer</h2>
+        <div class="hint">Tap an option. (Past Simple vs Past Continuous)</div>
+      </header>
+      <div class="content" id="practice1"></div>
+    </section>
+
+    <!-- Right: Practice 2 + Score -->
+    <aside class="card" aria-label="Practice 2 and Score">
+      <header>
+        <h2>Practice 2 – Drag-and-drop sentence builder</h2>
+        <div class="hint">Drag words into the sentence zone.</div>
+      </header>
+      <div class="content">
+        <div class="status">
+          <div class="scoreBox">
+            <div class="scoreLine">
+              <div>
+                <div class="tag" id="tagLine">🎯 Goal: 90%+</div>
+                <div class="mini">Your Score</div>
+              </div>
+              <div class="big" id="scorePct">0%</div>
+            </div>
+            <div class="bar" aria-label="score bar">
+              <div id="scoreBar"></div>
+            </div>
+            <div class="msg" id="scoreMsg">Answer all 8 items, then press <strong>Check Score</strong>.</div>
+            <div class="feedback" id="feedbackChips"></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div id="practice2" class="builder"></div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /**********************
+     * Data (from worksheet)
+     **********************/
+    const PRACTICE1 = [
+      {
+        id: "p1q1",
+        text: "I ____ a book at 5 pm yesterday.",
+        choices: ["read", "was reading", "have read"],
+        answer: "was reading"
+      },
+      {
+        id: "p1q2",
+        text: "She ____ dinner when I arrived.",
+        choices: ["was cooking", "cooked", "cooks"],
+        answer: "was cooking"
+      },
+      {
+        id: "p1q3",
+        text: "They ____ football while we ____ TV.",
+        choices: ["were playing / were watching", "played / watched", "was playing / was watching"],
+        answer: "were playing / were watching"
+      },
+      {
+        id: "p1q4",
+        text: "The phone ____ while I was sleeping.",
+        choices: ["rang", "was ringing"],
+        answer: "rang"
+      }
+    ];
+
+    // Sentence builder: each item has a correct sentence and a word bank with distractors
+    const PRACTICE2 = [
+      {
+        id: "p2q1",
+        prompt: "I (watch) TV when she (call).",
+        correct: "I was watching TV when she called.",
+        bank: ["I","was","watching","TV","when","she","called","watch","call","were","calling"]
+      },
+      {
+        id: "p2q2",
+        prompt: "They (play) while we (clean).",
+        correct: "They were playing while we were cleaning.",
+        bank: ["They","were","playing","while","we","were","cleaning","played","cleaned","was","clean"]
+      },
+      {
+        id: "p2q3",
+        prompt: "She (not listen) when the teacher (ask) a question.",
+        correct: "She wasn't listening when the teacher asked a question.",
+        bank: ["She","wasn't","listening","when","the","teacher","asked","a","question","didn't","listen","asking"]
+      },
+      {
+        id: "p2q4",
+        prompt: "What (do) you (do) at 9 pm?",
+        correct: "What were you doing at 9 pm?",
+        bank: ["What","were","you","doing","at","9","pm","did","do","was","are"]
+      }
+    ];
+
+    /**********************
+     * Simple “swoosh” + click sounds (Web Audio)
+     **********************/
+    let soundOn = true;
+    let audioCtx = null;
+
+    function ensureAudio(){
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+    }
+
+    function playClick(){
+      if (!soundOn) return;
+      ensureAudio();
+      const t = audioCtx.currentTime;
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(520, t);
+      osc.frequency.exponentialRampToValueAtTime(260, t + 0.06);
+
+      filter.type = "lowpass";
+      filter.frequency.setValueAtTime(1200, t);
+      filter.frequency.exponentialRampToValueAtTime(600, t + 0.06);
+
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.16, t + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(t);
+      osc.stop(t + 0.08);
+    }
+
+    function playSwoosh(){
+      if (!soundOn) return;
+      ensureAudio();
+      const t = audioCtx.currentTime;
+
+      // Noise buffer
+      const bufferSize = Math.floor(audioCtx.sampleRate * 0.15);
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i=0;i<bufferSize;i++){
+        // slightly biased noise for a "whoosh"
+        data[i] = (Math.random()*2-1) * (1 - i/bufferSize);
+      }
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = "bandpass";
+      filter.Q.value = 0.9;
+      filter.frequency.setValueAtTime(900, t);
+      filter.frequency.exponentialRampToValueAtTime(220, t + 0.15);
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.38, t + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.15);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+      noise.start(t);
+      noise.stop(t + 0.16);
+    }
+
+    /**********************
+     * Confetti (tiny canvas particle system)
+     **********************/
+    const confettiCanvas = document.getElementById("confettiCanvas");
+    const cctx = confettiCanvas.getContext("2d");
+    let confettiParticles = [];
+    let confettiRunning = false;
+
+    function resizeConfetti(){
+      confettiCanvas.width = window.innerWidth * devicePixelRatio;
+      confettiCanvas.height = window.innerHeight * devicePixelRatio;
+      cctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    }
+    window.addEventListener("resize", resizeConfetti);
+    resizeConfetti();
+
+    function launchConfetti(){
+      const count = 220;
+      confettiParticles = [];
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      for (let i=0;i<count;i++){
+        confettiParticles.push({
+          x: Math.random()*w,
+          y: -20 - Math.random()*h*0.2,
+          vx: (Math.random()*2-1) * 2.2,
+          vy: 2.2 + Math.random()*4.2,
+          size: 4 + Math.random()*6,
+          rot: Math.random()*Math.PI*2,
+          vr: (Math.random()*2-1) * 0.18,
+          // pick bright-ish random color without hardcoding a palette
+          color: `hsl(${Math.floor(Math.random()*360)}, 90%, 60%)`,
+          life: 1.0
+        });
+      }
+      confettiRunning = true;
+      playSwoosh();
+      requestAnimationFrame(tickConfetti);
+    }
+
+    function tickConfetti(){
+      if (!confettiRunning) return;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      cctx.clearRect(0,0,w,h);
+
+      let alive = 0;
+      for (const p of confettiParticles){
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.03; // gravity
+        p.rot += p.vr;
+        p.life -= 0.004;
+
+        if (p.y < h + 40 && p.life > 0) alive++;
+
+        cctx.save();
+        cctx.translate(p.x, p.y);
+        cctx.rotate(p.rot);
+        cctx.globalAlpha = Math.max(0, p.life);
+        cctx.fillStyle = p.color;
+        cctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.7);
+        cctx.restore();
+      }
+
+      if (alive > 0){
+        requestAnimationFrame(tickConfetti);
+      } else {
+        confettiRunning = false;
+        cctx.clearRect(0,0,w,h);
+      }
+    }
+
+    /**********************
+     * UI builders
+     **********************/
+    const practice1El = document.getElementById("practice1");
+    const practice2El = document.getElementById("practice2");
+    const progressText = document.getElementById("progressText");
+
+    function el(tag, attrs={}, children=[]){
+      const node = document.createElement(tag);
+      for (const [k,v] of Object.entries(attrs)){
+        if (k === "class") node.className = v;
+        else if (k === "html") node.innerHTML = v;
+        else node.setAttribute(k, v);
+      }
+      for (const c of children){
+        if (typeof c === "string") node.appendChild(document.createTextNode(c));
+        else node.appendChild(c);
+      }
+      return node;
+    }
+
+    function buildPractice1(){
+      practice1El.innerHTML = "";
+      PRACTICE1.forEach((q, idx) => {
+        const qWrap = el("div", { class: "question", "data-qid": q.id });
+        const top = el("div", { class: "qtext" }, [
+          el("div", { class: "qnum" }, [String(idx+1)]),
+          el("p", {}, [q.text])
+        ]);
+
+        const choices = el("div", { class: "choices" });
+        q.choices.forEach((choice, cidx) => {
+          const inputId = `${q.id}_${cidx}`;
+          const input = el("input", { type:"radio", name:q.id, id:inputId, value:choice });
+          input.addEventListener("change", () => {
+            playClick();
+            updateProgress();
+          });
+
+          const label = el("label", { class:"choice", for: inputId }, [
+            input,
+            el("div", {}, [
+              el("div", {}, [choice])
+            ])
+          ]);
+          choices.appendChild(label);
+        });
+
+        qWrap.appendChild(top);
+        qWrap.appendChild(choices);
+        practice1El.appendChild(qWrap);
+      });
+    }
+
+    function normalizeSentence(s){
+      return s
+        .replace(/\s+/g, " ")
+        .replace(/\s([.,!?;:])/g, "$1")
+        .trim();
+    }
+
+    function buildSentenceBuilder(){
+      practice2El.innerHTML = "";
+      PRACTICE2.forEach((q, idx) => {
+        const wrap = el("div", { class:"question", "data-qid": q.id });
+
+        const top = el("div", { class:"qtext" }, [
+          el("div", { class:"qnum" }, [String(idx+1)]),
+          el("div", {}, [
+            el("p", {}, [q.prompt]),
+            el("div", { class:"mini" }, ["Drag words below into the sentence zone. Tip: drag back to remove."])
+          ])
+        ]);
+
+        const dropzone = el("div", { class:"dropzone", "data-zone": q.id, "aria-label": "sentence dropzone" }, [
+          el("span", { class:"mini" }, ["Drop words here →"])
+        ]);
+
+        const wordbank = el("div", { class:"wordbank", "data-bank": q.id, "aria-label":"word bank" });
+
+        // unique-ish words, keep order provided
+        const words = q.bank.slice();
+        words.forEach((w, wi) => {
+          const word = el("span", {
+            class:"word",
+            draggable:"true",
+            "data-word": w,
+            "data-origin": q.id,
+            "data-uid": `${q.id}_${wi}_${Math.random().toString(16).slice(2)}`
+          }, [w]);
+
+          word.addEventListener("dragstart", (e) => {
+            playSwoosh();
+            e.dataTransfer.setData("text/plain", word.getAttribute("data-uid"));
+            e.dataTransfer.effectAllowed = "move";
+            setTimeout(() => word.classList.add("ghost"), 0);
+          });
+          word.addEventListener("dragend", () => {
+            word.classList.remove("ghost");
+          });
+
+          // click-to-move convenience
+          word.addEventListener("click", () => {
+            playClick();
+            const currentParent = word.parentElement;
+            const target = (currentParent === wordbank) ? dropzone : wordbank;
+            target.appendChild(word);
+            updateProgress();
+          });
+
+          wordbank.appendChild(word);
+        });
+
+        function zoneDragOver(e){
+          e.preventDefault();
+          dropzone.classList.add("active");
+          e.dataTransfer.dropEffect = "move";
+        }
+        function zoneDragLeave(){
+          dropzone.classList.remove("active");
+        }
+        function zoneDrop(e){
+          e.preventDefault();
+          dropzone.classList.remove("active");
+          const uid = e.dataTransfer.getData("text/plain");
+          const wordEl = document.querySelector(`[data-uid="${CSS.escape(uid)}"]`);
+          if (!wordEl) return;
+
+          // if dropping into zone, append
+          const from = wordEl.parentElement;
+          dropzone.appendChild(wordEl);
+          if (from !== dropzone) playClick();
+          updateProgress();
+        }
+
+        function bankDrop(e){
+          e.preventDefault();
+          const uid = e.dataTransfer.getData("text/plain");
+          const wordEl = document.querySelector(`[data-uid="${CSS.escape(uid)}"]`);
+          if (!wordEl) return;
+          wordbank.appendChild(wordEl);
+          playClick();
+          updateProgress();
+        }
+
+        dropzone.addEventListener("dragover", zoneDragOver);
+        dropzone.addEventListener("dragleave", zoneDragLeave);
+        dropzone.addEventListener("drop", zoneDrop);
+
+        wordbank.addEventListener("dragover", (e)=>e.preventDefault());
+        wordbank.addEventListener("drop", bankDrop);
+
+        // allow reordering inside dropzone by dragging over other words
+        dropzone.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          const uid = e.dataTransfer.getData("text/plain");
+          const dragging = document.querySelector(`[data-uid="${CSS.escape(uid)}"]`);
+          if (!dragging) return;
+
+          const afterEl = getDragAfterElement(dropzone, e.clientX, e.clientY);
+          if (afterEl == null) dropzone.appendChild(dragging);
+          else dropzone.insertBefore(dragging, afterEl);
+        });
+
+        wrap.appendChild(top);
+        wrap.appendChild(dropzone);
+        wrap.appendChild(wordbank);
+        practice2El.appendChild(wrap);
+      });
+    }
+
+    function getDragAfterElement(container, x, y){
+      const draggableElements = [...container.querySelectorAll(".word:not(.ghost)")];
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = (y - box.top - box.height / 2);
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY, element: null }).element;
+    }
+
+    /**********************
+     * Scoring + feedback
+     **********************/
+    const scorePctEl = document.getElementById("scorePct");
+    const scoreBarEl = document.getElementById("scoreBar");
+    const scoreMsgEl = document.getElementById("scoreMsg");
+    const feedbackChipsEl = document.getElementById("feedbackChips");
+    const tagLineEl = document.getElementById("tagLine");
+
+    function getAnsweredCount(){
+      let answered = 0;
+
+      // practice1 radios
+      PRACTICE1.forEach(q => {
+        const picked = document.querySelector(`input[name="${q.id}"]:checked`);
+        if (picked) answered++;
+      });
+
+      // practice2: if dropzone has at least 1 word beyond hint span
+      PRACTICE2.forEach(q => {
+        const zone = document.querySelector(`.dropzone[data-zone="${q.id}"]`);
+        const words = zone ? [...zone.querySelectorAll(".word")] : [];
+        if (words.length > 0) answered++;
+      });
+
+      return answered;
+    }
+
+    function updateProgress(){
+      const answered = getAnsweredCount();
+      progressText.textContent = `${answered}/8`;
+    }
+
+    function scoreAll(){
+      let correct = 0;
+      const total = 8;
+
+      feedbackChipsEl.innerHTML = "";
+
+      // Practice 1 scoring
+      PRACTICE1.forEach((q, i) => {
+        const picked = document.querySelector(`input[name="${q.id}"]:checked`);
+        const ok = picked && picked.value === q.answer;
+        if (ok) correct++;
+
+        const chip = document.createElement("span");
+        chip.className = `chip ${ok ? "good" : "bad"}`;
+        chip.textContent = `P1-${i+1}: ${ok ? "✓" : "✗"}`;
+        feedbackChipsEl.appendChild(chip);
+      });
+
+      // Practice 2 scoring (exact sentence match after normalization)
+      PRACTICE2.forEach((q, i) => {
+        const zone = document.querySelector(`.dropzone[data-zone="${q.id}"]`);
+        const words = zone ? [...zone.querySelectorAll(".word")].map(w => w.getAttribute("data-word")) : [];
+        const built = normalizeSentence(words.join(" "));
+        const target = normalizeSentence(q.correct);
+        const ok = built === target;
+        if (ok) correct++;
+
+        const chip = document.createElement("span");
+        chip.className = `chip ${ok ? "good" : "bad"}`;
+        chip.textContent = `P2-${i+1}: ${ok ? "✓" : "✗"}`;
+        feedbackChipsEl.appendChild(chip);
+
+        // Helpful inline hint if wrong and they attempted
+        if (!ok && words.length){
+          toast(`P2-${i+1} hint: check word order + punctuation.`);
+        }
+      });
+
+      const pct = Math.round((correct/total)*100);
+      scorePctEl.textContent = `${pct}%`;
+      scoreBarEl.style.width = `${pct}%`;
+
+      if (getAnsweredCount() < total){
+        scoreMsgEl.innerHTML = `You’ve answered <strong>${getAnsweredCount()}</strong> of <strong>${total}</strong>. Finish all items for your best score.`;
+        tagLineEl.textContent = "🧩 Keep going!";
+      } else {
+        if (pct >= 90){
+          scoreMsgEl.innerHTML = `Amazing! You scored <strong>${correct}/${total}</strong>. Confetti time! 🎉`;
+          tagLineEl.textContent = "🏆 90%+ achieved!";
+          launchConfetti();
+          toast("🎉 Awesome work — 90%+!");
+        } else if (pct >= 70){
+          scoreMsgEl.innerHTML = `Nice! You scored <strong>${correct}/${total}</strong>. Try again to reach 90%+.`;
+          tagLineEl.textContent = "💪 Almost there!";
+          toast("So close — tweak a couple answers!");
+        } else {
+          scoreMsgEl.innerHTML = `You scored <strong>${correct}/${total}</strong>. Review past simple vs past continuous and try again.`;
+          tagLineEl.textContent = "📚 Try again!";
+          toast("You’ve got this — try another round!");
+        }
+      }
+
+      playClick();
+      updateProgress();
+    }
+
+    function resetAll(){
+      // radios
+      PRACTICE1.forEach(q => {
+        document.querySelectorAll(`input[name="${q.id}"]`).forEach(r => r.checked = false);
+      });
+
+      // move all words back to banks
+      PRACTICE2.forEach(q => {
+        const zone = document.querySelector(`.dropzone[data-zone="${q.id}"]`);
+        const bank = document.querySelector(`.wordbank[data-bank="${q.id}"]`);
+        if (!zone || !bank) return;
+        [...zone.querySelectorAll(".word")].forEach(w => bank.appendChild(w));
+      });
+
+      scorePctEl.textContent = "0%";
+      scoreBarEl.style.width = "0%";
+      scoreMsgEl.innerHTML = `Answer all 8 items, then press <strong>Check Score</strong>.`;
+      feedbackChipsEl.innerHTML = "";
+      tagLineEl.textContent = "🎯 Goal: 90%+";
+
+      playSwoosh();
+      updateProgress();
+      toast("Reset complete.");
+    }
+
+    /**********************
+     * Toast
+     **********************/
+    const toastEl = document.getElementById("toast");
+    let toastTimer = null;
+
+    function toast(msg){
+      clearTimeout(toastTimer);
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1800);
+    }
+
+    /**********************
+     * Wire up buttons
+     **********************/
+    document.getElementById("checkBtn").addEventListener("click", scoreAll);
+    document.getElementById("resetBtn").addEventListener("click", resetAll);
+
+    document.getElementById("toggleSoundBtn").addEventListener("click", () => {
+      soundOn = !soundOn;
+      document.getElementById("soundState").textContent = soundOn ? "On" : "Off";
+      playClick();
+      toast(`Sound ${soundOn ? "on" : "off"}.`);
+    });
+
+    // First user interaction unlocks audio on iOS
+    document.addEventListener("pointerdown", () => {
+      if (soundOn) ensureAudio();
+    }, { once:true });
+
+    /**********************
+     * Init
+     **********************/
+    buildPractice1();
+    buildSentenceBuilder();
+    updateProgress();
+  </script>
+</body>
+</html>
